@@ -6,7 +6,7 @@
             overflow:hidden;
             margin:0;
             padding:0;
-            background: limegreen;
+            background: white;
         }
         div{
             height:720PX;
@@ -21,11 +21,17 @@
             font-family:Verdana, Geneva, sans-serif;
             font-size:40px;
         }
+		#frmMain {
+			width:1280px;height:720px;border:0px;display:none;position:absolute;top:0px;left:0px;
+		}
     </style>
     <title>Cast Hello Text</title>
 </head>
 <body>
-<iframe id="frmMain" style="width:1280px;height:720px" src="about:blank"></iframe>
+<div id="divMain">
+	Connecting to Salon Manager...
+</div>
+<iframe id="frmMain" frameborder="0" src="about:blank"></iframe>
 <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
 <script type="text/javascript">
     window.ComunicationServerIPAddress = "192.168.1.254";
@@ -75,6 +81,8 @@
     // utility function to display the text message in the input field
     function displayText(text) {
         console.log(text);
+		document.getElementById('divMain').style.display = "none";
+		document.getElementById('frmMain').style.display = "block";
         document.getElementById('frmMain').src = text;
         window.castReceiverManager.setApplicationState(text);
     };
